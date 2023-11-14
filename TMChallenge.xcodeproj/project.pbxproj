@@ -9,14 +9,28 @@
 /* Begin PBXBuildFile section */
 		7BE70FC02B02A8F90090D678 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FBF2B02A8F90090D678 /* AppDelegate.swift */; };
 		7BE70FC22B02A8F90090D678 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FC12B02A8F90090D678 /* SceneDelegate.swift */; };
-		7BE70FC42B02A8F90090D678 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FC32B02A8F90090D678 /* ViewController.swift */; };
-		7BE70FC72B02A8F90090D678 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE70FC52B02A8F90090D678 /* Main.storyboard */; };
 		7BE70FCA2B02A8F90090D678 /* TMChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FC82B02A8F90090D678 /* TMChallenge.xcdatamodeld */; };
 		7BE70FCC2B02A8FC0090D678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BE70FCB2B02A8FC0090D678 /* Assets.xcassets */; };
 		7BE70FCF2B02A8FC0090D678 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE70FCD2B02A8FC0090D678 /* LaunchScreen.storyboard */; };
 		7BE70FDA2B02A8FC0090D678 /* TMChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FD92B02A8FC0090D678 /* TMChallengeTests.swift */; };
 		7BE70FE42B02A8FC0090D678 /* TMChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FE32B02A8FC0090D678 /* TMChallengeUITests.swift */; };
 		7BE70FE62B02A8FC0090D678 /* TMChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FE52B02A8FC0090D678 /* TMChallengeUITestsLaunchTests.swift */; };
+		7BE70FFB2B02ABA00090D678 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FFA2B02ABA00090D678 /* AppCoordinator.swift */; };
+		7BE70FFF2B02AC070090D678 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FFE2B02AC070090D678 /* BaseViewController.swift */; };
+		7BE710022B02B19D0090D678 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE710012B02B19D0090D678 /* EventsViewController.swift */; };
+		7BE710042B02B1BC0090D678 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE710032B02B1BC0090D678 /* EventsViewModel.swift */; };
+		7BE7100A2B02C24A0090D678 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE710092B02C24A0090D678 /* NetworkManager.swift */; };
+		7BE7100C2B02C3150090D678 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7100B2B02C3150090D678 /* EndPointType.swift */; };
+		7BE7100E2B02C8FF0090D678 /* NetworkResponseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7100D2B02C8FF0090D678 /* NetworkResponseApi.swift */; };
+		7BE710112B02C94D0090D678 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE710102B02C94D0090D678 /* Result.swift */; };
+		7BE710162B02CC2E0090D678 /* EventsTM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE710152B02CC2E0090D678 /* EventsTM.swift */; };
+		7BE710182B02CC6F0090D678 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE710172B02CC6F0090D678 /* NetworkResponse.swift */; };
+		7BE7101B2B02CD780090D678 /* EventsNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7101A2B02CD780090D678 /* EventsNetworkService.swift */; };
+		7BE7101E2B02CE500090D678 /* EventsApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7101D2B02CE500090D678 /* EventsApiEndpoint.swift */; };
+		7BE710212B02CFD40090D678 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE710202B02CFD40090D678 /* ParameterEncoding.swift */; };
+		7BE710242B02D1BE0090D678 /* EventsApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE710232B02D1BE0090D678 /* EventsApiResponse.swift */; };
+		7BE710272B02D2EA0090D678 /* AnyPublisher+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE710262B02D2EA0090D678 /* AnyPublisher+Create.swift */; };
+		7BE7102A2B02D48C0090D678 /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE710292B02D48C0090D678 /* EventsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +54,6 @@
 		7BE70FBC2B02A8F90090D678 /* TMChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE70FBF2B02A8F90090D678 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BE70FC12B02A8F90090D678 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7BE70FC32B02A8F90090D678 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7BE70FC62B02A8F90090D678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7BE70FC92B02A8F90090D678 /* TMChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TMChallenge.xcdatamodel; sourceTree = "<group>"; };
 		7BE70FCB2B02A8FC0090D678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BE70FCE2B02A8FC0090D678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +63,22 @@
 		7BE70FDF2B02A8FC0090D678 /* TMChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE70FE32B02A8FC0090D678 /* TMChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMChallengeUITests.swift; sourceTree = "<group>"; };
 		7BE70FE52B02A8FC0090D678 /* TMChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7BE70FFA2B02ABA00090D678 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		7BE70FFE2B02AC070090D678 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		7BE710012B02B19D0090D678 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		7BE710032B02B1BC0090D678 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
+		7BE710092B02C24A0090D678 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		7BE7100B2B02C3150090D678 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
+		7BE7100D2B02C8FF0090D678 /* NetworkResponseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponseApi.swift; sourceTree = "<group>"; };
+		7BE710102B02C94D0090D678 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		7BE710152B02CC2E0090D678 /* EventsTM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTM.swift; sourceTree = "<group>"; };
+		7BE710172B02CC6F0090D678 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		7BE7101A2B02CD780090D678 /* EventsNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsNetworkService.swift; sourceTree = "<group>"; };
+		7BE7101D2B02CE500090D678 /* EventsApiEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsApiEndpoint.swift; sourceTree = "<group>"; };
+		7BE710202B02CFD40090D678 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		7BE710232B02D1BE0090D678 /* EventsApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsApiResponse.swift; sourceTree = "<group>"; };
+		7BE710262B02D2EA0090D678 /* AnyPublisher+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyPublisher+Create.swift"; sourceTree = "<group>"; };
+		7BE710292B02D48C0090D678 /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +129,10 @@
 		7BE70FBE2B02A8F90090D678 /* TMChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				7BE70FFD2B02ABF70090D678 /* Utils */,
+				7BE70FF22B02AB060090D678 /* Modules */,
 				7BE70FBF2B02A8F90090D678 /* AppDelegate.swift */,
 				7BE70FC12B02A8F90090D678 /* SceneDelegate.swift */,
-				7BE70FC32B02A8F90090D678 /* ViewController.swift */,
-				7BE70FC52B02A8F90090D678 /* Main.storyboard */,
 				7BE70FCB2B02A8FC0090D678 /* Assets.xcassets */,
 				7BE70FCD2B02A8FC0090D678 /* LaunchScreen.storyboard */,
 				7BE70FD02B02A8FC0090D678 /* Info.plist */,
@@ -128,6 +156,140 @@
 				7BE70FE52B02A8FC0090D678 /* TMChallengeUITestsLaunchTests.swift */,
 			);
 			path = TMChallengeUITests;
+			sourceTree = "<group>";
+		};
+		7BE70FF22B02AB060090D678 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				7BE70FF82B02AB890090D678 /* Features */,
+				7BE710142B02CC230090D678 /* Models */,
+				7BE70FF92B02AB930090D678 /* Navigation */,
+				7BE710082B02C22C0090D678 /* Networking */,
+				7BE710282B02D47E0090D678 /* Services */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		7BE70FF82B02AB890090D678 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				7BE710002B02B1910090D678 /* Events */,
+				7BE70FFC2B02ABB70090D678 /* EventDetail */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		7BE70FF92B02AB930090D678 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				7BE70FFA2B02ABA00090D678 /* AppCoordinator.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		7BE70FFC2B02ABB70090D678 /* EventDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EventDetail;
+			sourceTree = "<group>";
+		};
+		7BE70FFD2B02ABF70090D678 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7BE70FFE2B02AC070090D678 /* BaseViewController.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7BE710002B02B1910090D678 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				7BE710012B02B19D0090D678 /* EventsViewController.swift */,
+				7BE710032B02B1BC0090D678 /* EventsViewModel.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		7BE710082B02C22C0090D678 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7BE710252B02D2D60090D678 /* Utilities */,
+				7BE710222B02D1AF0090D678 /* Models */,
+				7BE7101F2B02CFC80090D678 /* Encoding */,
+				7BE7101C2B02CE3E0090D678 /* Endpoint */,
+				7BE7100B2B02C3150090D678 /* EndPointType.swift */,
+				7BE7100F2B02C93D0090D678 /* Helpers */,
+				7BE710092B02C24A0090D678 /* NetworkManager.swift */,
+				7BE7100D2B02C8FF0090D678 /* NetworkResponseApi.swift */,
+				7BE710192B02CD5E0090D678 /* Service */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		7BE7100F2B02C93D0090D678 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7BE710102B02C94D0090D678 /* Result.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7BE710142B02CC230090D678 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7BE710152B02CC2E0090D678 /* EventsTM.swift */,
+				7BE710172B02CC6F0090D678 /* NetworkResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7BE710192B02CD5E0090D678 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				7BE7101A2B02CD780090D678 /* EventsNetworkService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		7BE7101C2B02CE3E0090D678 /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				7BE7101D2B02CE500090D678 /* EventsApiEndpoint.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		7BE7101F2B02CFC80090D678 /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				7BE710202B02CFD40090D678 /* ParameterEncoding.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		7BE710222B02D1AF0090D678 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7BE710232B02D1BE0090D678 /* EventsApiResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7BE710252B02D2D60090D678 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				7BE710262B02D2EA0090D678 /* AnyPublisher+Create.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		7BE710282B02D47E0090D678 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7BE710292B02D48C0090D678 /* EventsService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +398,6 @@
 			files = (
 				7BE70FCF2B02A8FC0090D678 /* LaunchScreen.storyboard in Resources */,
 				7BE70FCC2B02A8FC0090D678 /* Assets.xcassets in Resources */,
-				7BE70FC72B02A8F90090D678 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,10 +422,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BE710162B02CC2E0090D678 /* EventsTM.swift in Sources */,
 				7BE70FCA2B02A8F90090D678 /* TMChallenge.xcdatamodeld in Sources */,
-				7BE70FC42B02A8F90090D678 /* ViewController.swift in Sources */,
+				7BE7101E2B02CE500090D678 /* EventsApiEndpoint.swift in Sources */,
+				7BE7101B2B02CD780090D678 /* EventsNetworkService.swift in Sources */,
+				7BE7102A2B02D48C0090D678 /* EventsService.swift in Sources */,
 				7BE70FC02B02A8F90090D678 /* AppDelegate.swift in Sources */,
+				7BE7100C2B02C3150090D678 /* EndPointType.swift in Sources */,
 				7BE70FC22B02A8F90090D678 /* SceneDelegate.swift in Sources */,
+				7BE710212B02CFD40090D678 /* ParameterEncoding.swift in Sources */,
+				7BE7100E2B02C8FF0090D678 /* NetworkResponseApi.swift in Sources */,
+				7BE710042B02B1BC0090D678 /* EventsViewModel.swift in Sources */,
+				7BE7100A2B02C24A0090D678 /* NetworkManager.swift in Sources */,
+				7BE710182B02CC6F0090D678 /* NetworkResponse.swift in Sources */,
+				7BE70FFF2B02AC070090D678 /* BaseViewController.swift in Sources */,
+				7BE710242B02D1BE0090D678 /* EventsApiResponse.swift in Sources */,
+				7BE710272B02D2EA0090D678 /* AnyPublisher+Create.swift in Sources */,
+				7BE70FFB2B02ABA00090D678 /* AppCoordinator.swift in Sources */,
+				7BE710022B02B19D0090D678 /* EventsViewController.swift in Sources */,
+				7BE710112B02C94D0090D678 /* Result.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,14 +477,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7BE70FC52B02A8F90090D678 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7BE70FC62B02A8F90090D678 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7BE70FCD2B02A8FC0090D678 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -449,8 +617,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TMChallenge/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -476,8 +643,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TMChallenge/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
