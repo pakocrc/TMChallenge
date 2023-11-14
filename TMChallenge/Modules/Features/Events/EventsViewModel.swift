@@ -101,7 +101,7 @@ public final class EventsViewModel: ObservableObject, Identifiable, EventsVMInpu
                     
                     self.page += 1
                     
-                    if let numberOfPages = events.page?.number {
+                    if let numberOfPages = events.page?.totalPages {
                         self.finishedFetchingActionProperty.send(self.page >= numberOfPages)
                     }
                     

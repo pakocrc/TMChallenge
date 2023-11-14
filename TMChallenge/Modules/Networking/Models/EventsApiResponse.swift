@@ -35,7 +35,7 @@ public struct EventApiResponse: Codable {
 //    let locale: Locale
     //    let type: EventTypeApiResponse
 //    let sales: SalesApiResponse
-//    let dates: DatesApiResponse
+    let dates: DatesApiResponse
 //    let classifications: [ClassificationApiResponse]
 //    let promoter: PromoterApiResponse?
 //    let promoters: [PromoterApiResponse]?
@@ -47,14 +47,14 @@ public struct EventApiResponse: Codable {
 //    let ticketLimit: TicketLimitApiResponse?
 //    let ageRestrictions: AgeRestrictionsApiResponse?
 //    let ticketing: TicketingApiResponse
-//    let links: EventLinksApiResponse
-//    let embedded: EventEmbeddedApiResponse
+    let eventLinks: EventLinksApiResponse
+    let eventEmbedded: EventEmbeddedApiResponse
 //    let outlets: [OutletApiResponse]?
 
     enum CodingKeys: String, CodingKey {
-        case name, id, test, url, images // , sales, dates, classifications //type, locale, promoter, promoters, info, pleaseNote, priceRanges, products, seatmap, accessibility, ticketLimit, ageRestrictions, ticketing
-//        case links = "_links"
-//        case embedded = "_embedded"
+        case name, id, test, url, images, dates // , sales, classifications //type, locale, promoter, promoters, info, pleaseNote, priceRanges, products, seatmap, accessibility, ticketLimit, ageRestrictions, ticketing
+        case eventLinks = "_links"
+        case eventEmbedded = "_embedded"
 //        case outlets
     }
 }
@@ -79,12 +79,12 @@ struct ClassificationApiResponse: Codable {
 }
 
 // MARK: - Genre
-struct GenreApiResponse: Codable {
+public struct GenreApiResponse: Codable {
     let id: String
     let name: GenreNameApiResponse
 }
 
-enum GenreNameApiResponse: String, Codable {
+public enum GenreNameApiResponse: String, Codable {
     case allOfUS = "All of US"
     case basketball = "Basketball"
     case charlotte = "Charlotte"
@@ -116,8 +116,8 @@ struct DatesApiResponse: Codable {
 
 // MARK: - Start
 struct StartApiResponse: Codable {
-    let localDate, localTime: String
-    let dateTime: Date
+    let localDate, localTime, dateTime: String
+//    let dateTime: Date
     let dateTBD, dateTBA, timeTBA, noSpecificTime: Bool
 }
 
@@ -126,15 +126,15 @@ struct StatusApiResponse: Codable {
     let code: CodeApiResponse
 }
 
-enum CodeApiResponse: String, Codable {
+public enum CodeApiResponse: String, Codable {
     case offsale = "offsale"
     case onsale = "onsale"
 }
 
 // MARK: - EventEmbedded
-struct EventEmbedded: Codable {
+public struct EventEmbeddedApiResponse: Codable {
     let venues: [VenueApiResponse]
-    let attractions: [AttractionApiResponse]
+//    let attractions: [AttractionApiResponse]
 }
 
 // MARK: - Attraction
@@ -177,14 +177,14 @@ public struct ImageApiResponse: Codable {
     let fallback: Bool
 }
 
-enum RatioApiResponse: String, Codable {
+public enum RatioApiResponse: String, Codable {
     case the16_9 = "16_9"
     case the3_2 = "3_2"
     case the4_3 = "4_3"
 }
 
 // MARK: - AttractionLinks
-struct AttractionLinksApiResponse: Codable {
+public struct AttractionLinksApiResponse: Codable {
     let linksSelf: FirstApiResponse
 
     enum CodingKeys: String, CodingKey {
@@ -193,11 +193,11 @@ struct AttractionLinksApiResponse: Codable {
 }
 
 // MARK: - First
-struct FirstApiResponse: Codable {
+public struct FirstApiResponse: Codable {
     let href: String
 }
 
-enum LocaleApiResponse: String, Codable {
+public enum LocaleApiResponse: String, Codable {
     case enUs = "en-us"
 }
 
@@ -206,7 +206,7 @@ enum AttractionTypeApiResponse: String, Codable {
 }
 
 // MARK: - UpcomingEvents
-struct UpcomingEventsApiResponse: Codable {
+public struct UpcomingEventsApiResponse: Codable {
     let tmr, ticketmaster: Int?
     let total, filtered: Int
 
@@ -218,61 +218,61 @@ struct UpcomingEventsApiResponse: Codable {
 }
 
 // MARK: - Venue
-struct VenueApiResponse: Codable {
+public struct VenueApiResponse: Codable {
     let name: String
     let type: VenueTypeApiResponse
     let id: String
     let test: Bool
     let url: String?
-    let locale: LocaleApiResponse
-    let images: [ImageApiResponse]?
-    let postalCode, timezone: String
+//    let locale: LocaleApiResponse
+//    let images: [ImageApiResponse]?
+//    let postalCode, timezone: String
     let city: CityApiResponse
     let state: StateApiResponse
     let country: CountryApiResponse
     let address: AddressApiResponse
-    let location: LocationApiResponse
-    let markets: [GenreApiResponse]?
-    let dmas: [DMAApiResponse]
-    let boxOfficeInfo: BoxOfficeInfoApiResponse?
-    let parkingDetail, accessibleSeatingDetail: String?
-    let generalInfo: GeneralInfoApiResponse?
-    let upcomingEvents: UpcomingEventsApiResponse
-    let links: AttractionLinksApiResponse
-    let aliases: [String]?
-    let social: SocialApiResponse?
-    let ada: AdaApiResponse?
+//    let location: LocationApiResponse
+//    let markets: [GenreApiResponse]?
+//    let dmas: [DMAApiResponse]
+//    let boxOfficeInfo: BoxOfficeInfoApiResponse?
+//    let parkingDetail, accessibleSeatingDetail: String?
+//    let generalInfo: GeneralInfoApiResponse?
+//    let upcomingEvents: UpcomingEventsApiResponse
+//    let links: AttractionLinksApiResponse
+//    let aliases: [String]?
+//    let social: SocialApiResponse?
+//    let ada: AdaApiResponse?
 
     enum CodingKeys: String, CodingKey {
-        case name, type, id, test, url, locale, images, postalCode, timezone, city, state, country, address, location, markets, dmas, boxOfficeInfo, parkingDetail, accessibleSeatingDetail, generalInfo, upcomingEvents
-        case links = "_links"
-        case aliases, social, ada
+        case name, type, id, test, url, city, state, country, address //, locale, images, postalCode, timezone, location, markets, dmas, boxOfficeInfo, parkingDetail, accessibleSeatingDetail, generalInfo, upcomingEvents
+//        case links = "_links"
+//        case aliases, social, ada
     }
 }
 
 // MARK: - Ada
-struct AdaApiResponse: Codable {
+public struct AdaApiResponse: Codable {
     let adaPhones, adaCustomCopy, adaHours: String
 }
 
 // MARK: - Address
-struct AddressApiResponse: Codable {
+public struct AddressApiResponse: Codable {
     let line1: String
 }
 
 // MARK: - BoxOfficeInfo
-struct BoxOfficeInfoApiResponse: Codable {
+public struct BoxOfficeInfoApiResponse: Codable {
     let phoneNumberDetail, openHoursDetail, acceptedPaymentDetail: String
     let willCallDetail: String?
 }
 
 // MARK: - City
-struct CityApiResponse: Codable {
+public struct CityApiResponse: Codable {
     let name: String
 }
 
 // MARK: - Country
-struct CountryApiResponse: Codable {
+public struct CountryApiResponse: Codable {
     let name: CountryNameApiResponse
     let countryCode: CountryCodeApiResponse
 }
@@ -281,46 +281,46 @@ enum CountryCodeApiResponse: String, Codable {
     case us = "US"
 }
 
-enum CountryNameApiResponse: String, Codable {
+public enum CountryNameApiResponse: String, Codable {
     case unitedStatesOfAmerica = "United States Of America"
 }
 
 // MARK: - DMA
-struct DMAApiResponse: Codable {
+public struct DMAApiResponse: Codable {
     let id: Int
 }
 
 // MARK: - GeneralInfo
-struct GeneralInfoApiResponse: Codable {
+public struct GeneralInfoApiResponse: Codable {
     let generalRule, childRule: String
 }
 
 // MARK: - Location
-struct LocationApiResponse: Codable {
+public struct LocationApiResponse: Codable {
     let longitude, latitude: String
 }
 
 // MARK: - Social
-struct SocialApiResponse: Codable {
+public struct SocialApiResponse: Codable {
     let twitter: TwitterApiResponse
 }
 
 // MARK: - Twitter
-struct TwitterApiResponse: Codable {
+public struct TwitterApiResponse: Codable {
     let handle: String
 }
 
 // MARK: - State
-struct StateApiResponse: Codable {
+public struct StateApiResponse: Codable {
     let name, stateCode: String
 }
 
-enum VenueTypeApiResponse: String, Codable {
+public enum VenueTypeApiResponse: String, Codable {
     case venue = "venue"
 }
 
 // MARK: - EventLinks
-struct EventLinksApiResponse: Codable {
+public struct EventLinksApiResponse: Codable {
     let linksSelf: FirstApiResponse
     let attractions, venues: [FirstApiResponse]
 

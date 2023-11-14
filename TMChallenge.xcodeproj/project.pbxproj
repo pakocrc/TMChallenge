@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B947D192B03E33800667350 /* EventsBaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D182B03E33800667350 /* EventsBaseCollectionView.swift */; };
+		7B947D1C2B03E46900667350 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D1B2B03E46900667350 /* EventCollectionViewCell.swift */; };
+		7B947D1E2B03E75900667350 /* CustomEventImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D1D2B03E75900667350 /* CustomEventImage.swift */; };
+		7B947D202B03EE8500667350 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D1F2B03EE8500667350 /* Alert.swift */; };
+		7B947D222B03EF9F00667350 /* UICollectionView+EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D212B03EF9F00667350 /* UICollectionView+EmptyView.swift */; };
+		7B947D242B03EFF800667350 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D232B03EFF800667350 /* CustomTextView.swift */; };
+		7B947D262B03F58800667350 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D252B03F58800667350 /* Cache.swift */; };
+		7B947D282B03F64B00667350 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D272B03F64B00667350 /* ImageService.swift */; };
+		7B947D2A2B03F6B700667350 /* ImageNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D292B03F6B700667350 /* ImageNetworkService.swift */; };
+		7B947D2C2B03F6E700667350 /* ImageApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D2B2B03F6E700667350 /* ImageApiEndpoint.swift */; };
+		7B947D2E2B03FEE600667350 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D2D2B03FEE600667350 /* UIDevice.swift */; };
+		7B947D302B03FF0500667350 /* NSDirectionalEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D2F2B03FF0500667350 /* NSDirectionalEdgeInsets.swift */; };
 		7BE70FC02B02A8F90090D678 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FBF2B02A8F90090D678 /* AppDelegate.swift */; };
 		7BE70FC22B02A8F90090D678 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FC12B02A8F90090D678 /* SceneDelegate.swift */; };
 		7BE70FCA2B02A8F90090D678 /* TMChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FC82B02A8F90090D678 /* TMChallenge.xcdatamodeld */; };
@@ -51,6 +63,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B947D182B03E33800667350 /* EventsBaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsBaseCollectionView.swift; sourceTree = "<group>"; };
+		7B947D1B2B03E46900667350 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
+		7B947D1D2B03E75900667350 /* CustomEventImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEventImage.swift; sourceTree = "<group>"; };
+		7B947D1F2B03EE8500667350 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		7B947D212B03EF9F00667350 /* UICollectionView+EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+EmptyView.swift"; sourceTree = "<group>"; };
+		7B947D232B03EFF800667350 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		7B947D252B03F58800667350 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		7B947D272B03F64B00667350 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		7B947D292B03F6B700667350 /* ImageNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetworkService.swift; sourceTree = "<group>"; };
+		7B947D2B2B03F6E700667350 /* ImageApiEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageApiEndpoint.swift; sourceTree = "<group>"; };
+		7B947D2D2B03FEE600667350 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		7B947D2F2B03FF0500667350 /* NSDirectionalEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsets.swift; sourceTree = "<group>"; };
 		7BE70FBC2B02A8F90090D678 /* TMChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE70FBF2B02A8F90090D678 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BE70FC12B02A8F90090D678 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +130,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B947D1A2B03E45D00667350 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				7B947D312B03FF2A00667350 /* Cells */,
+				7B947D182B03E33800667350 /* EventsBaseCollectionView.swift */,
+				7B947D1D2B03E75900667350 /* CustomEventImage.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		7B947D312B03FF2A00667350 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7B947D1B2B03E46900667350 /* EventCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		7BE70FB32B02A8F90090D678 = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +240,12 @@
 			isa = PBXGroup;
 			children = (
 				7BE70FFE2B02AC070090D678 /* BaseViewController.swift */,
+				7B947D1F2B03EE8500667350 /* Alert.swift */,
+				7B947D212B03EF9F00667350 /* UICollectionView+EmptyView.swift */,
+				7B947D232B03EFF800667350 /* CustomTextView.swift */,
+				7B947D252B03F58800667350 /* Cache.swift */,
+				7B947D2D2B03FEE600667350 /* UIDevice.swift */,
+				7B947D2F2B03FF0500667350 /* NSDirectionalEdgeInsets.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -205,6 +253,7 @@
 		7BE710002B02B1910090D678 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				7B947D1A2B03E45D00667350 /* CollectionView */,
 				7BE710012B02B19D0090D678 /* EventsViewController.swift */,
 				7BE710032B02B1BC0090D678 /* EventsViewModel.swift */,
 			);
@@ -248,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				7BE7101A2B02CD780090D678 /* EventsNetworkService.swift */,
+				7B947D292B03F6B700667350 /* ImageNetworkService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -256,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				7BE7101D2B02CE500090D678 /* EventsApiEndpoint.swift */,
+				7B947D2B2B03F6E700667350 /* ImageApiEndpoint.swift */,
 			);
 			path = Endpoint;
 			sourceTree = "<group>";
@@ -288,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				7BE710292B02D48C0090D678 /* EventsService.swift */,
+				7B947D272B03F64B00667350 /* ImageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -423,22 +475,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BE710162B02CC2E0090D678 /* EventsTM.swift in Sources */,
+				7B947D242B03EFF800667350 /* CustomTextView.swift in Sources */,
+				7B947D282B03F64B00667350 /* ImageService.swift in Sources */,
+				7B947D1C2B03E46900667350 /* EventCollectionViewCell.swift in Sources */,
 				7BE70FCA2B02A8F90090D678 /* TMChallenge.xcdatamodeld in Sources */,
+				7B947D202B03EE8500667350 /* Alert.swift in Sources */,
 				7BE7101E2B02CE500090D678 /* EventsApiEndpoint.swift in Sources */,
+				7B947D262B03F58800667350 /* Cache.swift in Sources */,
+				7B947D302B03FF0500667350 /* NSDirectionalEdgeInsets.swift in Sources */,
 				7BE7101B2B02CD780090D678 /* EventsNetworkService.swift in Sources */,
 				7BE7102A2B02D48C0090D678 /* EventsService.swift in Sources */,
 				7BE70FC02B02A8F90090D678 /* AppDelegate.swift in Sources */,
 				7BE7100C2B02C3150090D678 /* EndPointType.swift in Sources */,
 				7BE70FC22B02A8F90090D678 /* SceneDelegate.swift in Sources */,
+				7B947D222B03EF9F00667350 /* UICollectionView+EmptyView.swift in Sources */,
+				7B947D2A2B03F6B700667350 /* ImageNetworkService.swift in Sources */,
 				7BE710212B02CFD40090D678 /* ParameterEncoding.swift in Sources */,
+				7B947D2C2B03F6E700667350 /* ImageApiEndpoint.swift in Sources */,
 				7BE7100E2B02C8FF0090D678 /* NetworkResponseApi.swift in Sources */,
 				7BE710042B02B1BC0090D678 /* EventsViewModel.swift in Sources */,
 				7BE7100A2B02C24A0090D678 /* NetworkManager.swift in Sources */,
+				7B947D192B03E33800667350 /* EventsBaseCollectionView.swift in Sources */,
 				7BE710182B02CC6F0090D678 /* NetworkResponse.swift in Sources */,
 				7BE70FFF2B02AC070090D678 /* BaseViewController.swift in Sources */,
 				7BE710242B02D1BE0090D678 /* EventsApiResponse.swift in Sources */,
 				7BE710272B02D2EA0090D678 /* AnyPublisher+Create.swift in Sources */,
+				7B947D2E2B03FEE600667350 /* UIDevice.swift in Sources */,
 				7BE70FFB2B02ABA00090D678 /* AppCoordinator.swift in Sources */,
+				7B947D1E2B03E75900667350 /* CustomEventImage.swift in Sources */,
 				7BE710022B02B19D0090D678 /* EventsViewController.swift in Sources */,
 				7BE710112B02C94D0090D678 /* Result.swift in Sources */,
 			);
