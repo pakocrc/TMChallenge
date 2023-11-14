@@ -27,14 +27,14 @@ final class EventCollectionViewCell: UICollectionViewCell {
             DispatchQueue.main.async { [weak self] in
                 guard let `self` = self else { return }
                 
-                if let posterPath = event.images.first {
-                    self.eventImage.setUrlString(urlString: posterPath.url)
+                if let posterPath = event.images?.first {
+                    self.eventImage.setUrlString(urlString: posterPath.url ?? "")
                 }
                 
-                self.eventTitle.text = !event.name.isEmpty ? event.name : ""
-                self.eventOverview.text = "\(event.eventEmbedded.venues.first?.name ?? ""), \(event.eventEmbedded.venues.first?.address.name ?? ""), \(event.eventEmbedded.venues.first?.state.name ?? ""), \(event.eventEmbedded.venues.first?.country.name ?? "")"
+                self.eventTitle.text = event.name ?? ""
+                self.eventOverview.text = "\(event.eventEmbedded?.venues?.first?.name ?? ""), \(event.eventEmbedded?.venues?.first?.address?.name ?? ""), \(event.eventEmbedded?.venues?.first?.state?.name ?? ""), \(event.eventEmbedded?.venues?.first?.country?.name ?? "")"
                 
-                self.releaseDateLabel.text = !event.dates.start.localDate.isEmpty ? event.dates.start.localDate : ""
+                self.releaseDateLabel.text = event.dates?.start?.localDate ?? ""
             }
         }
     }

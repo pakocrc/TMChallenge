@@ -19,6 +19,7 @@
 		7B947D2C2B03F6E700667350 /* ImageApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D2B2B03F6E700667350 /* ImageApiEndpoint.swift */; };
 		7B947D2E2B03FEE600667350 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D2D2B03FEE600667350 /* UIDevice.swift */; };
 		7B947D302B03FF0500667350 /* NSDirectionalEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D2F2B03FF0500667350 /* NSDirectionalEdgeInsets.swift */; };
+		7B947D332B04129C00667350 /* UISearchBar+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D322B04129C00667350 /* UISearchBar+Loading.swift */; };
 		7BE70FC02B02A8F90090D678 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FBF2B02A8F90090D678 /* AppDelegate.swift */; };
 		7BE70FC22B02A8F90090D678 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FC12B02A8F90090D678 /* SceneDelegate.swift */; };
 		7BE70FCA2B02A8F90090D678 /* TMChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FC82B02A8F90090D678 /* TMChallenge.xcdatamodeld */; };
@@ -75,6 +76,7 @@
 		7B947D2B2B03F6E700667350 /* ImageApiEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageApiEndpoint.swift; sourceTree = "<group>"; };
 		7B947D2D2B03FEE600667350 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		7B947D2F2B03FF0500667350 /* NSDirectionalEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsets.swift; sourceTree = "<group>"; };
+		7B947D322B04129C00667350 /* UISearchBar+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Loading.swift"; sourceTree = "<group>"; };
 		7BE70FBC2B02A8F90090D678 /* TMChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE70FBF2B02A8F90090D678 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BE70FC12B02A8F90090D678 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				7B947D252B03F58800667350 /* Cache.swift */,
 				7B947D2D2B03FEE600667350 /* UIDevice.swift */,
 				7B947D2F2B03FF0500667350 /* NSDirectionalEdgeInsets.swift */,
+				7B947D322B04129C00667350 /* UISearchBar+Loading.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				7B947D1C2B03E46900667350 /* EventCollectionViewCell.swift in Sources */,
 				7BE70FCA2B02A8F90090D678 /* TMChallenge.xcdatamodeld in Sources */,
 				7B947D202B03EE8500667350 /* Alert.swift in Sources */,
+				7B947D332B04129C00667350 /* UISearchBar+Loading.swift in Sources */,
 				7BE7101E2B02CE500090D678 /* EventsApiEndpoint.swift in Sources */,
 				7B947D262B03F58800667350 /* Cache.swift in Sources */,
 				7B947D302B03FF0500667350 /* NSDirectionalEdgeInsets.swift in Sources */,

@@ -40,35 +40,35 @@ public class EmbeddedTM {
 }
 
 public class EventTM: Identifiable, Hashable {
-    public let name: String
-    public let id: String
-    public let test: Bool
-    public let url: String
-    public let images: [ImageTM]
-    public let dates: DatesTM
-    public let eventLinks: EventLinksTM
-    public let eventEmbedded: EventEmbeddedTM
+    public let name: String?
+    public let id: String?
+    public let test: Bool?
+    public let url: String?
+    public let images: [ImageTM]?
+    public let dates: DatesTM?
+//    public let eventLinks: EventLinksTMy
+    public let eventEmbedded: EventEmbeddedTM?
     
-    init(name: String, id: String, test: Bool, url: String, images: [ImageTM], dates: DatesTM, eventLinks: EventLinksTM, eventEmbedded: EventEmbeddedTM) {
+    init(name: String?, id: String?, test: Bool?, url: String?, images: [ImageTM]?, dates: DatesTM?, /*eventLinks: EventLinksTM,*/ eventEmbedded: EventEmbeddedTM?) {
         self.name = name
         self.id = id
         self.test = test
         self.url = url
         self.images = images
         self.dates = dates
-        self.eventLinks = eventLinks
+//        self.eventLinks = eventLinks
         self.eventEmbedded = eventEmbedded
     }
     
     convenience init(apiResponse: EventApiResponse) {
-        let images = apiResponse.images.map { return ImageTM(apiResponse: $0) }
-        self.init(name: apiResponse.name, 
+        let images = apiResponse.images?.map { ImageTM(apiResponse: $0) }
+        self.init(name: apiResponse.name,
                   id: apiResponse.id, 
                   test: apiResponse.test,
                   url: apiResponse.url,
                   images: images,
                   dates: DatesTM(apiResponse: apiResponse.dates),
-                  eventLinks: EventLinksTM(apiResponse: apiResponse.eventLinks),
+//                  eventLinks: EventLinksTM(apiResponse: apiResponse.eventLinks),
                   eventEmbedded: EventEmbeddedTM(apiResponse: apiResponse.eventEmbedded))
     }
     
@@ -82,29 +82,29 @@ public class EventTM: Identifiable, Hashable {
 }
 
 public class EventEmbeddedTM {
-    let venues: [VenueTM]
+    let venues: [VenueTM]?
     
-    init(venues: [VenueTM]) {
+    init(venues: [VenueTM]?) {
         self.venues = venues
     }
     
-    convenience init(apiResponse: EventEmbeddedApiResponse) {
-        let venues = apiResponse.venues.map({ VenueTM(apiResponse: $0) })
+    convenience init(apiResponse: EventEmbeddedApiResponse?) {
+        let venues = apiResponse?.venues.map({ VenueTM(apiResponse: $0) })
         self.init(venues: venues)
     }
 }
 
 public class VenueTM {
-    let name: String
-    let id: String
-    let test: Bool
+    let name: String?
+    let id: String?
+    let test: Bool?
     let url: String?
-    let city: PlaceTM
-    let state: PlaceTM
-    let country: PlaceTM
-    let address: PlaceTM
+    let city: PlaceTM?
+    let state: PlaceTM?
+    let country: PlaceTM?
+    let address: PlaceTM?
     
-    init(name: String, id: String, test: Bool, url: String?, city: PlaceTM, state: PlaceTM, country: PlaceTM, address: PlaceTM) {
+    init(name: String?, id: String?, test: Bool?, url: String?, city: PlaceTM?, state: PlaceTM?, country: PlaceTM?, address: PlaceTM?) {
         self.name = name
         self.id = id
         self.test = test
@@ -120,17 +120,17 @@ public class VenueTM {
                   id: apiResponse.id,
                   test: apiResponse.test,
                   url: apiResponse.url,
-                  city: PlaceTM(name: apiResponse.city.name),
-                  state: PlaceTM(name: apiResponse.state.name),
-                  country: PlaceTM(name: apiResponse.country.name.rawValue),
-                  address: PlaceTM(name: apiResponse.address.line1))
+                  city: PlaceTM(name: apiResponse.city?.name),
+                  state: PlaceTM(name: apiResponse.state?.name),
+                  country: PlaceTM(name: apiResponse.country?.name),
+                  address: PlaceTM(name: apiResponse.address?.line1))
     }
 }
 
 public class PlaceTM {
-    let name: String
+    let name: String?
     
-    init(name: String) {
+    init(name: String?) {
         self.name = name
     }
 }
@@ -168,12 +168,12 @@ public class FirstTM {
 }
 
 public class ImageTM {
-    public let ratio: RatioTM
-    public let url: String
-    public let width, height: Int
-    public let fallback: Bool
+    public let ratio: RatioTM?
+    public let url: String?
+    public let width, height: Int?
+    public let fallback: Bool?
     
-    init(ratio: RatioTM, url: String, width: Int, height: Int, fallback: Bool) {
+    init(ratio: RatioTM?, url: String?, width: Int?, height: Int?, fallback: Bool?) {
         self.ratio = ratio
         self.url = url
         self.width = width
@@ -181,14 +181,15 @@ public class ImageTM {
         self.fallback = fallback
     }
     
-    public convenience init(apiResponse: ImageApiResponse) {
+    public convenience init(apiResponse: ImageApiResponse?) {
         var ratio: RatioTM
-        switch apiResponse.ratio {
+        switch apiResponse?.ratio {
             case .the16_9: ratio = .the16_9
             case .the3_2: ratio = .the3_2
             case .the4_3: ratio = .the4_3
+            default: ratio = .the4_3
         }
-        self.init(ratio: ratio, url: apiResponse.url, width: apiResponse.width, height: apiResponse.height, fallback: apiResponse.fallback)
+        self.init(ratio: ratio, url: apiResponse?.url, width: apiResponse?.width, height: apiResponse?.height, fallback: apiResponse?.fallback)
     }
 }
 
@@ -199,33 +200,33 @@ public enum RatioTM: String {
 }
 
 public class DatesTM {
-    let start: StartTM
+    let start: StartTM?
     let timezone: String?
-    let status: StatusTM
-    let spanMultipleDays: Bool
+    let status: StatusTM?
+    let spanMultipleDays: Bool?
     
-    init(start: StartTM, timezone: String?, status: StatusTM, spanMultipleDays: Bool) {
+    init(start: StartTM?, timezone: String?, status: StatusTM?, spanMultipleDays: Bool?) {
         self.start = start
         self.timezone = timezone
         self.status = status
         self.spanMultipleDays = spanMultipleDays
     }
     
-    convenience init(apiResponse: DatesApiResponse) {
-        self.init(start: StartTM(apiResponse: apiResponse.start),
-                  timezone: apiResponse.timezone,
-                  status: StatusTM(apiResponse: apiResponse.status),
-                  spanMultipleDays: apiResponse.spanMultipleDays)
+    convenience init(apiResponse: DatesApiResponse?) {
+        self.init(start: StartTM(apiResponse: apiResponse?.start),
+                  timezone: apiResponse?.timezone,
+                  status: StatusTM(apiResponse: apiResponse?.status),
+                  spanMultipleDays: apiResponse?.spanMultipleDays)
     }
 }
 
 // MARK: - Start
 public class StartTM {
-    let localDate, localTime, dateTime: String
+    let localDate, localTime, dateTime: String?
 //    let dateTime: Date
-    let dateTBD, dateTBA, timeTBA, noSpecificTime: Bool
+    let dateTBD, dateTBA, timeTBA, noSpecificTime: Bool?
     
-    init(localDate: String, localTime: String, dateTime: String, dateTBD: Bool, dateTBA: Bool, timeTBA: Bool, noSpecificTime: Bool) {
+    init(localDate: String?, localTime: String?, dateTime: String?, dateTBD: Bool?, dateTBA: Bool?, timeTBA: Bool?, noSpecificTime: Bool?) {
         self.localDate = localDate
         self.localTime = localTime
         self.dateTime = dateTime
@@ -235,24 +236,25 @@ public class StartTM {
         self.noSpecificTime = noSpecificTime
     }
     
-    convenience init(apiResponse: StartApiResponse) {
-        self.init(localDate: apiResponse.localDate, localTime: apiResponse.localDate, dateTime: apiResponse.dateTime, dateTBD: apiResponse.dateTBD, dateTBA: apiResponse.dateTBA, timeTBA: apiResponse.timeTBA, noSpecificTime: apiResponse.noSpecificTime)
+    convenience init(apiResponse: StartApiResponse?) {
+        self.init(localDate: apiResponse?.localDate, localTime: apiResponse?.localDate, dateTime: apiResponse?.dateTime, dateTBD: apiResponse?.dateTBD, dateTBA: apiResponse?.dateTBA, timeTBA: apiResponse?.timeTBA, noSpecificTime: apiResponse?.noSpecificTime)
     }
 }
 
 // MARK: - Status
 public class StatusTM {
-    let code: CodeTM
+    let code: CodeTM?
     
     init(code: CodeTM) {
         self.code = code
     }
     
-    convenience init(apiResponse: StatusApiResponse) {
+    convenience init(apiResponse: StatusApiResponse?) {
         var code: CodeTM
-        switch apiResponse.code {
+        switch apiResponse?.code {
             case .offsale: code = .offsale
             case .onsale: code = .onsale
+            default: code = .offsale
         }
         self.init(code: code)
     }

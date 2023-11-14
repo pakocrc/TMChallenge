@@ -8,7 +8,6 @@
 import UIKit
 
 extension UICollectionView {
-    /// Sets an empty view when a collection is empty or is loading.
     func setEmptyView(title: String, message: String, centeredX: Bool = true, centeredY: Bool = false) {
         let emptyView: UIView = {
             let emptyView = UIView(frame: .zero)
@@ -75,14 +74,12 @@ extension UICollectionView {
         }
     }
 
-    /// Restore the collection view when a datasource is fetched.
     func removeEmptyView() {
         self.backgroundView = nil
     }
 }
 
 extension UICollectionViewCell {
-    /// Sets an empty view when a collection is empty.
     func setEmptyView(title: String, centered: Bool = false) {
         let emptyView = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
 
@@ -109,7 +106,6 @@ extension UICollectionViewCell {
         titleLabel.topAnchor.constraint(equalTo: emptyView.topAnchor, constant: 10).isActive = true
     }
 
-    /// Restore the collection view when a datasource is fetched.
     func removeEmptyView() {
         self.backgroundView = nil
     }

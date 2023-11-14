@@ -11,12 +11,10 @@ import Foundation
 public struct EventsApiResponse: Codable {
     let embedded: EmbeddedApiResponse
     let page: PageApiResponse
-    // let links: LinksApiResponse
 
     enum CodingKeys: String, CodingKey {
         case embedded = "_embedded"
         case page
-        // case links = "_links"
     }
 }
 
@@ -27,35 +25,17 @@ public struct EmbeddedApiResponse: Codable {
 
 // MARK: - Event
 public struct EventApiResponse: Codable {
-    let name: String
-    let id: String
-    let test: Bool
-    let url: String
-    let images: [ImageApiResponse]
-//    let locale: Locale
-    //    let type: EventTypeApiResponse
-//    let sales: SalesApiResponse
-    let dates: DatesApiResponse
-//    let classifications: [ClassificationApiResponse]
-//    let promoter: PromoterApiResponse?
-//    let promoters: [PromoterApiResponse]?
-//    let info, pleaseNote: String?
-//    let priceRanges: [PriceRangeApiResponse]?
-//    let products: [ProductApiResponse]?
-//    let seatmap: SeatmapApiResponse
-//    let accessibility: AccessibilityApiResponse?
-//    let ticketLimit: TicketLimitApiResponse?
-//    let ageRestrictions: AgeRestrictionsApiResponse?
-//    let ticketing: TicketingApiResponse
-    let eventLinks: EventLinksApiResponse
-    let eventEmbedded: EventEmbeddedApiResponse
-//    let outlets: [OutletApiResponse]?
+    let name: String?
+    let id: String?
+    let test: Bool?
+    let url: String?
+    let images: [ImageApiResponse]?
+    let dates: DatesApiResponse?
+    let eventEmbedded: EventEmbeddedApiResponse?
 
     enum CodingKeys: String, CodingKey {
-        case name, id, test, url, images, dates // , sales, classifications //type, locale, promoter, promoters, info, pleaseNote, priceRanges, products, seatmap, accessibility, ticketLimit, ageRestrictions, ticketing
-        case eventLinks = "_links"
+        case name, id, test, url, images, dates
         case eventEmbedded = "_embedded"
-//        case outlets
     }
 }
 
@@ -108,17 +88,17 @@ public enum GenreNameApiResponse: String, Codable {
 
 // MARK: - Dates
 struct DatesApiResponse: Codable {
-    let start: StartApiResponse
+    let start: StartApiResponse?
     let timezone: String?
-    let status: StatusApiResponse
-    let spanMultipleDays: Bool
+    let status: StatusApiResponse?
+    let spanMultipleDays: Bool?
 }
 
 // MARK: - Start
 struct StartApiResponse: Codable {
-    let localDate, localTime, dateTime: String
+    let localDate, localTime, dateTime: String?
 //    let dateTime: Date
-    let dateTBD, dateTBA, timeTBA, noSpecificTime: Bool
+    let dateTBD, dateTBA, timeTBA, noSpecificTime: Bool?
 }
 
 // MARK: - Status
@@ -227,10 +207,10 @@ public struct VenueApiResponse: Codable {
 //    let locale: LocaleApiResponse
 //    let images: [ImageApiResponse]?
 //    let postalCode, timezone: String
-    let city: CityApiResponse
-    let state: StateApiResponse
-    let country: CountryApiResponse
-    let address: AddressApiResponse
+    let city: CityApiResponse?
+    let state: StateApiResponse?
+    let country: CountryApiResponse?
+    let address: AddressApiResponse?
 //    let location: LocationApiResponse
 //    let markets: [GenreApiResponse]?
 //    let dmas: [DMAApiResponse]
@@ -273,16 +253,16 @@ public struct CityApiResponse: Codable {
 
 // MARK: - Country
 public struct CountryApiResponse: Codable {
-    let name: CountryNameApiResponse
-    let countryCode: CountryCodeApiResponse
+    let name: String
+//    let countryCode: CountryCodeApiResponse
 }
 
-enum CountryCodeApiResponse: String, Codable {
-    case us = "US"
+public struct CountryCodeApiResponse: Codable {
+    let code: String?
 }
 
-public enum CountryNameApiResponse: String, Codable {
-    case unitedStatesOfAmerica = "United States Of America"
+public struct CountryNameApiResponse: Codable {
+    let name: String?
 }
 
 // MARK: - DMA

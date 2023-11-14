@@ -26,7 +26,7 @@ class EventsBaseCollectionView: BaseViewController {
     var collectionView: UICollectionView!
     var dataSource: DataSource!
     var loadedCount = 0
-    var loading = false
+    var loading = true
 
     var finishedFetching = false {
         didSet {

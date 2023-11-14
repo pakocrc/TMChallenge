@@ -12,6 +12,7 @@ let publicApiKey: String = "DW0E98NrxUIfDDtNN7ijruVSm60ryFLX"
 public enum EventsApiEndpoint {
     // MARK: Events
     case events(page: Int)
+    case searchEvents(query: String, page: Int)
 }
 
 extension EventsApiEndpoint: EndPointType {
@@ -28,8 +29,8 @@ extension EventsApiEndpoint: EndPointType {
 
     var path: String {
         switch self {
-        case .events:
-            return "events"
+            case .events, .searchEvents:
+                return "events"
         }
     }
 
@@ -43,6 +44,12 @@ extension EventsApiEndpoint: EndPointType {
                 return .requestParameters(bodyParameters: nil,
                                           bodyEncoding: .urlEncoding,
                                           urlParameters: ["page": page,
+                                                          "apikey": publicApiKey])
+            case .searchEvents(let query, let page):
+                return .requestParameters(bodyParameters: nil,
+                                          bodyEncoding: .urlEncoding,
+                                          urlParameters: ["page": page,
+                                                          "keyword": query,
                                                           "apikey": publicApiKey])
         }
     }

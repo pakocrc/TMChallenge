@@ -16,14 +16,9 @@ struct Alert {
         }
     }
     
-    /// Present an basic alert on the center of the screen.
-    /// - Parameters:
-    ///     - viewController: The view controller to be presented in.
-    ///     - message: A message for the alert.
-    ///     - title: A title for the alert.
     static func showAlert(on viewController: UIViewController, title: String, message: String) {
         var actions: [UIAlertAction] = []
-        actions.append(UIAlertAction(title: NSLocalizedString("close", comment: "Close button"), style: .default, handler: { _ in }))
+        actions.append(UIAlertAction(title: "Close button", style: .default, handler: { _ in }))
         showBasicAlert(on: viewController, with: title, message: message, actions: actions)
     }
 }

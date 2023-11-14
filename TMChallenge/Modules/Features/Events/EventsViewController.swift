@@ -19,14 +19,17 @@ final class EventsViewController: EventsBaseCollectionView {
     private var loadingSubscription: Cancellable?
     private var showErrorSubscription: Cancellable?
     private var viewtitleSubscription: Cancellable?
+    private var events: [EventTM]?
+    private var currentSearchControllerStatus = false
+    private var searchControllerDidChangeSubscription: Cancellable?
     
     // MARK: UI Elements
     private lazy var sizeMenu: UIMenu = { [unowned self] in
-        let menu = UIMenu(title: NSLocalizedString("collection_view_set_size_menu_title", comment: "Select items size"), image: nil, identifier: nil, options: [.displayInline], children: [
-            UIAction(title: NSLocalizedString("columns", comment: "Columns"), image: UIImage(systemName: "rectangle.split.3x1"), handler: { (_) in
+        let menu = UIMenu(title: "Select items size", image: nil, identifier: nil, options: [.displayInline], children: [
+            UIAction(title: "Columns", image: UIImage(systemName: "rectangle.split.3x1"), handler: { (_) in
                 self.collectionLayout = .columns
             }),
-            UIAction(title: NSLocalizedString("list", comment: "List"), image: UIImage(systemName: "square.fill.text.grid.1x2"), handler: { (_) in
+            UIAction(title: "List", image: UIImage(systemName: "square.fill.text.grid.1x2"), handler: { (_) in
                 self.collectionLayout = .list
             })
         ])
@@ -63,7 +66,7 @@ final class EventsViewController: EventsBaseCollectionView {
         navigationItem.searchController = searchController
         
         let leftBarButtonImage = UIImage(systemName: "square.fill.text.grid.1x2")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("collection_view_set_layout_button_title", comment: "Set collection layout"), image: leftBarButtonImage, primaryAction: nil, menu: sizeMenu)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Set collection layout", image: leftBarButtonImage, primaryAction: nil, menu: sizeMenu)
     }
     
     override func bindViewModel() {
@@ -74,6 +77,7 @@ final class EventsViewController: EventsBaseCollectionView {
 
                 DispatchQueue.main.async { [weak self] in
                     self?.navigationController?.navigationItem.rightBarButtonItem?.isEnabled = true
+                    self?.events = events
                     self?.updateDataSource(events: events)
                 }
             })
@@ -81,7 +85,10 @@ final class EventsViewController: EventsBaseCollectionView {
         loadingSubscription = viewModel.outputs.loading()
             .sink(receiveValue: { [weak self] (loading) in
                 guard let `self` = self else { return }
-                self.loading = loading
+                DispatchQueue.main.async { [weak self] in
+                    self?.loading = loading
+                    self?.searchController.searchBar.isLoading = loading
+                }
             })
 
         finishedFetchingSubscription = viewModel.outputs.finishedFetchingAction()
@@ -94,23 +101,56 @@ final class EventsViewController: EventsBaseCollectionView {
             .sink(receiveValue: { [weak self] errorMessage in
                 guard let `self` = self else { return }
                 self.handleEmptyView()
-                Alert.showAlert(on: self, title: "Something went wrong", message: errorMessage)
+//                Alert.showAlert(on: self, title: "Something went wrong", message: errorMessage)
+            })
+        
+        searchControllerDidChangeSubscription = viewModel.outputs.searchControllerDidChangeAction()
+            .sink(receiveValue: { [weak self] isActive in
+                guard let `self` = self else { return }
+
+                if isActive {
+                    self.updateDataSourceSearch(events: [], animatingDifferences: true)
+
+                } else {
+                    self.updateDataSourceSearch(events: [], animatingDifferences: true)
+                    viewModel.inputs.fetchEvents()
+                }
             })
     }
     
     // MARK: - Collection View
     override func updateDataSource(events: [EventTM], animatingDifferences: Bool = true) {
-            var snapshot = self.dataSource.snapshot()
-
-            snapshot.appendItems(events, toSection: .events)
-            self.loadedCount = snapshot.numberOfItems
-
+        var snapshot = self.dataSource.snapshot()
+        
+        snapshot.appendItems(events, toSection: .events)
+        self.loadedCount = snapshot.numberOfItems
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             guard let `self` = self else { return }
-
+            
             self.collectionView.removeEmptyView()
             self.setActivityIndicator(active: false)
             self.dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+        }
+    }
+    
+    private func updateDataSourceSearch(events: [EventTM]? = nil, animatingDifferences: Bool = true) {
+        DispatchQueue.main.async { [weak self] in
+            guard let `self` = self else { return }
+
+            var snapshot = self.dataSource.snapshot()
+
+            if events?.count == 0 {
+                snapshot.deleteItems(snapshot.itemIdentifiers(inSection: .events))
+            } 
+
+            if let events = events, !events.isEmpty {
+
+                snapshot.appendItems(events, toSection: .events)
+            }
+
+            self.dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+            self.handleEmptyView()
         }
     }
 
@@ -138,8 +178,8 @@ final class EventsViewController: EventsBaseCollectionView {
                                                  centeredY: true)
 
             } else if !self.loading && dataSourceItems < 1 {
-                self.collectionView.setEmptyView(title: "Empty list",
-                                                 message: "Empty list",
+                self.collectionView.setEmptyView(title: "Search 🔍",
+                                                 message: "Type something to search...",
                                                  centeredY: true)
 
                 let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.reloadCollectionView))
@@ -179,19 +219,19 @@ extension EventsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         searchController.showsSearchResultsController = true
 
-//        if currentSearchControllerStatus != searchController.isActive {
-//            self.currentSearchControllerStatus = searchController.isActive
-//            viewModel.inputs.searchControllerDidChange(isActive: searchController.isActive)
-//        }
-//
-//        if let searchQuery = searchController.searchBar.text {
-//            viewModel.inputs.searchTextDidChange(searchQuery: searchQuery)
-//
-//            if !searchQuery.isEmpty, searchQuery.count >= 4 {
-//                DispatchQueue.main.async { [weak self] in
-//                    self?.searchController.searchBar.isLoading = true
-//                }
-//            }
-//        }
+        if currentSearchControllerStatus != searchController.isActive {
+            self.currentSearchControllerStatus = searchController.isActive
+            viewModel.inputs.searchControllerDidChange(isActive: searchController.isActive)
+        }
+
+        if let searchQuery = searchController.searchBar.text {
+            viewModel.inputs.searchTextDidChange(searchQuery: searchQuery)
+
+            if !searchQuery.isEmpty, searchQuery.count >= 4 {
+                DispatchQueue.main.async { [weak self] in
+                    self?.searchController.searchBar.isLoading = true
+                }
+            }
+        }
     }
 }

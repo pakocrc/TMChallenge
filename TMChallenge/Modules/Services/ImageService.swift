@@ -22,10 +22,6 @@ public final class ImageService: ImageNetworkServiceProtocol {
         return sharedImageService
     }
 
-    /// Use this method to get images
-    /// - Parameters:
-    ///   - imagePath: The image path
-    ///   - completion: The callback
     public func getImage(imagePath: String, completion: @escaping (Data?, NetworkResponse?) -> Void) {
         self.getImageApi(imagePath: imagePath) { data, networkResponseApi in
             var networkResponse: NetworkResponse

@@ -14,6 +14,12 @@ public protocol EventsVMInputs: AnyObject {
     
     /// Call when a event is selected.
     func eventSelected(event: EventTM)
+    
+    /// Call when the search controller change its status.
+    func searchControllerDidChange(isActive: Bool)
+    
+    /// Call when the search text did change.
+    func searchTextDidChange(searchQuery: String?)
 }
 
 public protocol EventsVMOutputs: AnyObject {
@@ -31,6 +37,9 @@ public protocol EventsVMOutputs: AnyObject {
 
     /// Emits when an error occurred.
     func showError() -> PassthroughSubject<String, Never>
+    
+    /// Emits when the search controller change its status.
+    func searchControllerDidChangeAction() -> PassthroughSubject<Bool, Never>
 }
 
 public protocol EventsVMTypes: AnyObject {
@@ -50,21 +59,18 @@ public final class EventsViewModel: ObservableObject, Identifiable, EventsVMInpu
     
     init(eventsService: EventsService) {
         self.eventsService = eventsService
-        
+        self.loadingProperty.value = true
+        self.searchControllerDidChangeProperty
+            .sink { [weak self] isActive in
+                self?.searchControllerDidChangeActionProperty.send(isActive)
+                
+            }.store(in: &cancellable)
         
         let getEvents = self.fetchEventsProperty
             .flatMap({ [weak self] _ -> AnyPublisher<EventsTM, Never> in
                 guard let `self` = self else { return Empty(completeImmediately: true).eraseToAnyPublisher() }
 
                 self.loadingProperty.value = true
-
-//                switch self.searchCriteriaActionProperty.value {
-//                case .discover(let genre):
-//                    if let genreName = genre.name {
-//                        self.setViewTitlePropery.send(genreName)
-//                    }
-//                default: break
-//                }
 
                 return eventsService.events(page: self.page)
                     .retry(2)
@@ -86,7 +92,7 @@ public final class EventsViewModel: ObservableObject, Identifiable, EventsVMInpu
                 switch completionReceived {
                     case .failure(let error):
                         print("🔴 [EventsViewModel] [init] Received completion error. Error: \(error.localizedDescription)")
-                        self.showErrorProperty.send(NSLocalizedString("network_response_error", comment: "Network error message"))
+                        self.showErrorProperty.send("Network error message")
                     default: break
                 }
             }, receiveValue: { [weak self] events in
@@ -108,6 +114,44 @@ public final class EventsViewModel: ObservableObject, Identifiable, EventsVMInpu
                     self.fetchEventsActionProperty.send(events.embedded?.events)
                 }
             }).store(in: &cancellable)
+        
+        let searchEvents = searchTextDidChangeProperty
+            .filter({ !($0?.isEmpty ?? true) && ($0?.count ?? 0) >= 4 })
+            .throttle(for: 2, scheduler: DispatchQueue.main, latest: true)
+            .flatMap({ [weak self] queryText -> AnyPublisher<EventsTM, Never> in
+                guard let `self` = self else { return Empty(completeImmediately: true).eraseToAnyPublisher() }
+
+                self.loadingProperty.value = true
+                return eventsService.searchEvents(query: queryText ?? "", page: 0)
+                    .retry(2)
+                    .mapError({ [weak self] networkResponse -> NetworkResponse in
+                        print("🔴 [EventsViewModel] [init] Received completion error. Error: \(networkResponse.localizedDescription)")
+                        self?.loadingProperty.value = false
+                        self?.handleNetworkResponseError(networkResponse)
+                        return networkResponse
+                    })
+                    .replaceError(with: EventsTM())
+                    .eraseToAnyPublisher()
+            }).share()
+
+        searchEvents
+            .sink(receiveCompletion: { [weak self] completionReceived in
+                guard let `self` = self else { return }
+
+                self.loadingProperty.value = false
+                switch completionReceived {
+                    case .failure(let error):
+                        print("🔴 [EventsViewModel] [init] Received completion error. Error: \(error.localizedDescription)")
+                        self.showErrorProperty.send("Network error message")                       
+                    default: break
+                }
+            }, receiveValue: { [weak self] events in
+                guard let `self` = self else { return }
+
+                self.loadingProperty.value = false
+                self.fetchEventsActionProperty.value = events.embedded?.events
+
+            }).store(in: &cancellable)
     }
     
     // MARK: - ⬇️ INPUTS Definition
@@ -119,6 +163,16 @@ public final class EventsViewModel: ObservableObject, Identifiable, EventsVMInpu
     private let eventSelectedProperty = PassthroughSubject<EventTM, Never>()
     public func eventSelected(event: EventTM) {
         eventSelectedProperty.send(event)
+    }
+    
+    private let searchTextDidChangeProperty = PassthroughSubject<String?, Never>()
+    public func searchTextDidChange(searchQuery: String?) {
+        searchTextDidChangeProperty.send(searchQuery)
+    }
+
+    private let searchControllerDidChangeProperty = PassthroughSubject<Bool, Never>()
+    public func searchControllerDidChange(isActive: Bool) {
+        searchControllerDidChangeProperty.send(isActive)
     }
 
     // MARK: - ⬆️ OUTPUTS Definition
@@ -147,10 +201,15 @@ public final class EventsViewModel: ObservableObject, Identifiable, EventsVMInpu
         return showErrorProperty
     }
     
+    private let searchControllerDidChangeActionProperty = PassthroughSubject<Bool, Never>()
+    public func searchControllerDidChangeAction() -> PassthroughSubject<Bool, Never> {
+        return searchControllerDidChangeActionProperty
+    }
+    
     // MARK: - ⚙️ Helpers
     private func handleNetworkResponseError(_ networkResponse: NetworkResponse) {
         print("❌ Network response error: \(networkResponse.localizedDescription)")
-//        self.showErrorProperty.send(NSLocalizedString("network_response_error", comment: "Network response error"))
+        self.showErrorProperty.send("Network response error. \(networkResponse.localizedDescription)")
     }
 
     // MARK: - 🗑 Deinit
