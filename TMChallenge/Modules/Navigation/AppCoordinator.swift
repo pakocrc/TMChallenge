@@ -16,7 +16,7 @@ protocol Coordinator {
 final class AppCoordinator: Coordinator {
     // MARK: Consts
     private let parentViewController: BaseViewController
-    private let eventsService = EventsService.shared()
+//    private let eventsService: EventsService
     
     // MARK: Vars
     private var window: UIWindow
@@ -33,6 +33,7 @@ final class AppCoordinator: Coordinator {
     func start() {
         let mainNavigation = UINavigationController()
         
+        let eventsService = EventsService(eventsNetworkService: EventsNetworkService())
         let eventsVM = EventsViewModel(eventsService: eventsService)
         let eventsVC = EventsViewController(viewModel: eventsVM)
         

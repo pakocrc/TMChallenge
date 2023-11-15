@@ -20,12 +20,15 @@
 		7B947D2E2B03FEE600667350 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D2D2B03FEE600667350 /* UIDevice.swift */; };
 		7B947D302B03FF0500667350 /* NSDirectionalEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D2F2B03FF0500667350 /* NSDirectionalEdgeInsets.swift */; };
 		7B947D332B04129C00667350 /* UISearchBar+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B947D322B04129C00667350 /* UISearchBar+Loading.swift */; };
+		7BD50F382B054FCD00C56CBF /* EventsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD50F372B054FCD00C56CBF /* EventsViewModelTests.swift */; };
+		7BD50F3C2B055D3B00C56CBF /* EventsNetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD50F3B2B055D3B00C56CBF /* EventsNetworkServiceMock.swift */; };
+		7BD50F3E2B055DBD00C56CBF /* GetEventsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BD50F3D2B055DBD00C56CBF /* GetEventsResponse.json */; };
+		7BD50F402B05782400C56CBF /* SearchEventsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BD50F3F2B05782400C56CBF /* SearchEventsResponse.json */; };
 		7BE70FC02B02A8F90090D678 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FBF2B02A8F90090D678 /* AppDelegate.swift */; };
 		7BE70FC22B02A8F90090D678 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FC12B02A8F90090D678 /* SceneDelegate.swift */; };
 		7BE70FCA2B02A8F90090D678 /* TMChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FC82B02A8F90090D678 /* TMChallenge.xcdatamodeld */; };
 		7BE70FCC2B02A8FC0090D678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BE70FCB2B02A8FC0090D678 /* Assets.xcassets */; };
 		7BE70FCF2B02A8FC0090D678 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE70FCD2B02A8FC0090D678 /* LaunchScreen.storyboard */; };
-		7BE70FDA2B02A8FC0090D678 /* TMChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FD92B02A8FC0090D678 /* TMChallengeTests.swift */; };
 		7BE70FE42B02A8FC0090D678 /* TMChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FE32B02A8FC0090D678 /* TMChallengeUITests.swift */; };
 		7BE70FE62B02A8FC0090D678 /* TMChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FE52B02A8FC0090D678 /* TMChallengeUITestsLaunchTests.swift */; };
 		7BE70FFB2B02ABA00090D678 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE70FFA2B02ABA00090D678 /* AppCoordinator.swift */; };
@@ -77,6 +80,11 @@
 		7B947D2D2B03FEE600667350 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		7B947D2F2B03FF0500667350 /* NSDirectionalEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsets.swift; sourceTree = "<group>"; };
 		7B947D322B04129C00667350 /* UISearchBar+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Loading.swift"; sourceTree = "<group>"; };
+		7BD50F372B054FCD00C56CBF /* EventsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModelTests.swift; sourceTree = "<group>"; };
+		7BD50F3B2B055D3B00C56CBF /* EventsNetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsNetworkServiceMock.swift; sourceTree = "<group>"; };
+		7BD50F3D2B055DBD00C56CBF /* GetEventsResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GetEventsResponse.json; sourceTree = "<group>"; };
+		7BD50F3F2B05782400C56CBF /* SearchEventsResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchEventsResponse.json; sourceTree = "<group>"; };
+		7BD50F432B057F5B00C56CBF /* TMChallenge.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TMChallenge.xctestplan; sourceTree = "<group>"; };
 		7BE70FBC2B02A8F90090D678 /* TMChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE70FBF2B02A8F90090D678 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BE70FC12B02A8F90090D678 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,7 +93,6 @@
 		7BE70FCE2B02A8FC0090D678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7BE70FD02B02A8FC0090D678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BE70FD52B02A8FC0090D678 /* TMChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BE70FD92B02A8FC0090D678 /* TMChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMChallengeTests.swift; sourceTree = "<group>"; };
 		7BE70FDF2B02A8FC0090D678 /* TMChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE70FE32B02A8FC0090D678 /* TMChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMChallengeUITests.swift; sourceTree = "<group>"; };
 		7BE70FE52B02A8FC0090D678 /* TMChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -150,9 +157,28 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		7BD50F412B057F0800C56CBF /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				7BD50F422B057F1200C56CBF /* Resources */,
+				7BD50F3B2B055D3B00C56CBF /* EventsNetworkServiceMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		7BD50F422B057F1200C56CBF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7BD50F3D2B055DBD00C56CBF /* GetEventsResponse.json */,
+				7BD50F3F2B05782400C56CBF /* SearchEventsResponse.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		7BE70FB32B02A8F90090D678 = {
 			isa = PBXGroup;
 			children = (
+				7BD50F432B057F5B00C56CBF /* TMChallenge.xctestplan */,
 				7BE70FBE2B02A8F90090D678 /* TMChallenge */,
 				7BE70FD82B02A8FC0090D678 /* TMChallengeTests */,
 				7BE70FE22B02A8FC0090D678 /* TMChallengeUITests */,
@@ -188,7 +214,8 @@
 		7BE70FD82B02A8FC0090D678 /* TMChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
-				7BE70FD92B02A8FC0090D678 /* TMChallengeTests.swift */,
+				7BD50F412B057F0800C56CBF /* Mocks */,
+				7BD50F372B054FCD00C56CBF /* EventsViewModelTests.swift */,
 			);
 			path = TMChallengeTests;
 			sourceTree = "<group>";
@@ -460,6 +487,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BD50F3E2B055DBD00C56CBF /* GetEventsResponse.json in Resources */,
+				7BD50F402B05782400C56CBF /* SearchEventsResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,7 +545,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BE70FDA2B02A8FC0090D678 /* TMChallengeTests.swift in Sources */,
+				7BD50F382B054FCD00C56CBF /* EventsViewModelTests.swift in Sources */,
+				7BD50F3C2B055D3B00C56CBF /* EventsNetworkServiceMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

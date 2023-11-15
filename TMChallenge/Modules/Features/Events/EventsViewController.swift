@@ -210,8 +210,8 @@ final class EventsViewController: EventsBaseCollectionView {
 
 extension EventsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let event = dataSource.itemIdentifier(for: indexPath) else { return }
-        viewModel.inputs.eventSelected(event: event)
+        guard let _ = dataSource.itemIdentifier(for: indexPath) else { return }
+//        viewModel.inputs.eventSelected(event: event)
     }
 }
 

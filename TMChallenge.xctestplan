@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "CB6DF209-9537-4D55-924E-1674616DB116",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:TMChallenge.xcodeproj",
+      "identifier" : "7BE70FBB2B02A8F90090D678",
+      "name" : "TMChallenge"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:TMChallenge.xcodeproj",
+        "identifier" : "7BE70FD42B02A8FC0090D678",
+        "name" : "TMChallengeTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:TMChallenge.xcodeproj",
+        "identifier" : "7BE70FDE2B02A8FC0090D678",
+        "name" : "TMChallengeUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

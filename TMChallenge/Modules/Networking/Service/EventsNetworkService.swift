@@ -10,6 +10,7 @@ import Foundation
 
 public protocol EventsNetworkServiceProtocol {
     func eventsApi(page: Int) -> AnyPublisher<EventsApiResponse, NetworkResponseApi>
+    func searchEventsApi(query: String, page: Int) -> AnyPublisher<EventsApiResponse, NetworkResponseApi>
 }
 
 public final class EventsNetworkService: EventsNetworkServiceProtocol {

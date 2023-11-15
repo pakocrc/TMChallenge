@@ -8,21 +8,18 @@
 import Combine
 import Foundation
 
-public final class EventsService: EventsNetworkServiceProtocol {
-    private let eventsNetworkService: EventsNetworkService
+public protocol EventsServiceProtocol {
+    func events(page: Int) -> AnyPublisher<EventsTM, NetworkResponse>
+    func searchEvents(query: String, page: Int) -> AnyPublisher<EventsTM, NetworkResponse>
+}
+
+public final class EventsService: EventsServiceProtocol {
+    private let eventsNetworkService: EventsNetworkServiceProtocol
 
     private var cancellable = Set<AnyCancellable>()
 
-    private static let sharedEventsService: EventsService = {
-        return EventsService(eventsNetworkService: EventsNetworkService())
-    }()
-
-    private init(eventsNetworkService: EventsNetworkService) {
+    public init(eventsNetworkService: EventsNetworkServiceProtocol) {
         self.eventsNetworkService = eventsNetworkService
-    }
-
-    static func shared() -> EventsService {
-        return sharedEventsService
     }
 
     // MARK: - Public Methods
